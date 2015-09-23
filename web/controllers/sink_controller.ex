@@ -1,6 +1,7 @@
 defmodule SslBench.SinkController do
   use SslBench.Web, :controller
   alias SslBench.Sink
+  alias SslBench.SinkSup
 
   plug :scrub_params, "sink" when action in [:create]
 
@@ -9,6 +10,7 @@ defmodule SslBench.SinkController do
 
     case Repo.insert(changeset) do
       {:ok, sink} ->
+        {:ok, _} = SinkSup.start_sink(sink)
         conn
         |> put_status(:created)
         |> json sink
