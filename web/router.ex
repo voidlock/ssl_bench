@@ -23,6 +23,6 @@ defmodule SslBench.Router do
   scope "/api", SslBench do
     pipe_through :api
 
-    resources "/endpoints", ApiController, only: [:create, :show]
+    resources "/sinks", SinkController, only: [:create, :show]
   end
 end

@@ -13,6 +13,7 @@ defmodule SslBench do
       worker(SslBench.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(SslBench.Worker, [arg1, arg2, arg3]),
+      worker(SslBench.NextSocket, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
