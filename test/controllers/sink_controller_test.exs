@@ -7,7 +7,7 @@ defmodule SslBench.SinkControllerTest do
   end
 
   test "POST /api/endpoints", %{conn: conn} do
-    conn = post conn, sink_path(conn, :create), sink: %{mode: "raw"}
+    conn = post conn, sink_path(conn, :create), sink: %{mode: "tcp"}
     assert json_response(conn, 201)
   end
 end

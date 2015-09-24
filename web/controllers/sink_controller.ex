@@ -13,7 +13,7 @@ defmodule SslBench.SinkController do
         {:ok, _} = SinkSup.start_sink(sink)
         conn
         |> put_status(:created)
-        |> json sink
+        |> json Map.take(sink, [:id, :mode, :port])
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
